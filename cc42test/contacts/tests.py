@@ -2,8 +2,7 @@ from django.utils import unittest
 from django.test.client import RequestFactory
 from django.http import Http404
 
-from cc42test.contacts import views
-#from contacts import views
+from contacts import views
 
 class SimpleTest(unittest.TestCase):
     def setUp(self):
