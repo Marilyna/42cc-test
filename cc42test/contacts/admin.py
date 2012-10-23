@@ -1,4 +1,5 @@
-from contacts.models import Contact
+from cc42test.contacts.models import Contact
+#from contacts.models import Contact
 from django.contrib import admin
 
 class ContactAdmin(admin.ModelAdmin):

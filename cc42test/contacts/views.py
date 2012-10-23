@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
-from contacts.models import Contact
+from cc42test.contacts.models import Contact
+#from contacts.models import Contact
 
 
 def index(request):
