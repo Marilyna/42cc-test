@@ -1,0 +1,17 @@
+{% extends "contacts/base.html" %}
+{% block content %}
+    <h3>{{ contact }}</h3>
+    <address>
+        <dl class="dl-horizontal">
+            <dt>Name</dt><dd>{{ contact.name }}</dd>
+            <dt>Last name</dt><dd>{{ contact.last_name }}</dd>
+            <dt>Date of birth</dt><dd>{{ contact.birth_date }}</dd>
+            <dt>Email</dt><dd><a href="mailto:#">{{ contact.email }}</a></dd>
+            <dt>Jabber</dt><dd>{{ contact.jabber }}</dd>
+            <dt>Skype</dt><dd>{{ contact.skype }}</dd>
+            <dt>Other contacts</dt><dd>{{ contact.other_contacts }}</dd>
+            <dt>Bio</dt><dd>{{ contact.bio }}</dd>
+        </dl>
+    </address>
+    <a href='{% url contacts.views.index %}'>Back to list</a>
+{% endblock %}

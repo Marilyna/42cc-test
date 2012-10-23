@@ -1,0 +1,30 @@
+[
+  {
+    "pk": 1, 
+    "model": "contacts.contact", 
+    "fields": {
+      "bio": "My bio", 
+      "last_name": "Solovyova", 
+      "name": "Marina", 
+      "other_contacts": "Ukraine, Kiev\r\n+380506531751", 
+      "skype": "marilyna_16", 
+      "birth_date": "1987-06-16", 
+      "jabber": "marilynam@qip.ru", 
+      "email": "marinka.solovyova@gmail.com"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "contacts.contact", 
+    "fields": {
+      "bio": "Born on 22 October 1990", 
+      "last_name": "Ivanov", 
+      "name": "Ivan", 
+      "other_contacts": "Kiev, Ukraine", 
+      "skype": "ivan_ivanov", 
+      "birth_date": "1990-10-22", 
+      "jabber": "ivan@jabber.com", 
+      "email": "ivan@ivanov.com"
+    }
+  }
+]
