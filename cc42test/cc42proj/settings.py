@@ -134,6 +134,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
+    'cc42proj.context_processors.save_django_settings',
 )
 
 # A sample logging configuration. The only tangible logging
