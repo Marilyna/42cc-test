@@ -25,3 +25,8 @@ class SimpleTest(unittest.TestCase):
             pass
         else:
             self.fail()
+            
+    def test_statistic(self):
+        request = self.factory.get('/statistic/')
+        response = views.statistic(request)
+        self.assertEqual(response.status_code, 200)
