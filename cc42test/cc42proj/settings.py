@@ -1,7 +1,8 @@
-import os.path as op
+import os.path as op, sys
 
 # we need forward slashes on windows too
 PROJECT_ROOT = op.dirname(op.dirname(__file__)).replace('\\', '/') + '/'
+sys.path.insert(0, PROJECT_ROOT)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
