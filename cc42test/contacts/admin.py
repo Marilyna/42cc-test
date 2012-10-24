@@ -1,4 +1,4 @@
-from contacts.models import Contact
+from contacts.models import Contact, Request
 from django.contrib import admin
 
 class ContactAdmin(admin.ModelAdmin):
@@ -8,4 +8,8 @@ class ContactAdmin(admin.ModelAdmin):
         ('Other', {'fields': ['bio']})
     ]
 
+class RequestAdmin(admin.ModelAdmin):
+    list_display = ('url', 'method', 'timestamp')
+    
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Request, RequestAdmin)

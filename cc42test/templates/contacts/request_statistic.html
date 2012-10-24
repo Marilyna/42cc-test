@@ -1,0 +1,22 @@
+{% extends "contacts/base.html" %}
+{% block content %}
+    {% if request_list %}
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Request URL</th>
+            <th>Method</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for req in request_list %}
+            <tr>
+                <td>{{ req.url }}</td>
+                <td>{{ req.method }}</td>
+                <td>{{ req.timestamp }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No requests were made recently</p>
+    {% endif %}
+    <a href='{% url contacts.views.index %}'>Back to list</a>
+{% endblock %}
