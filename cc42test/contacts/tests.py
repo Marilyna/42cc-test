@@ -3,6 +3,7 @@ from django.test.client import RequestFactory
 from django.http import Http404
 
 from contacts import views
+from cc42proj import middleware, context_processors
 
 class SimpleTest(unittest.TestCase):
     def setUp(self):
@@ -30,3 +31,23 @@ class SimpleTest(unittest.TestCase):
         request = self.factory.get('/statistic/')
         response = views.statistic(request)
         self.assertEqual(response.status_code, 200)
+
+        
+class MiddlewareTest(unittest.TestCase):
+    def setUp(self):
+        self.mw = middleware.SaveRequestsMiddleware()
+        self.factory = RequestFactory()
+
+    def test_middleware(self):
+        request = self.factory.get('/')
+        self.assertEqual(self.mw.process_request(request), None)
+        
+        
+class ContextProcessorTest(unittest.TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        
+    def test_context_processor(self):
+        request = self.factory.get('/')
+        result = context_processors.save_django_settings(request)
+        self.assertTrue(isinstance(result, dict))
