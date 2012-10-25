@@ -26,5 +26,23 @@
       "jabber": "ivan@jabber.com", 
       "email": "ivan@ivanov.com"
     }
+  },
+  {
+    "pk": 1,
+    "model": "auth.user",
+    "fields": {
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2012-10-23T10:35:14.058Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$10000$jWU5ptcdrAXd$QYUaIUGibiCfbm19k05FoUyzpqFGKAci6U/deZJ5oQg=",
+      "email": "aa@aa.aa",
+      "date_joined": "2012-10-23T10:35:14.058Z"
+    }
   }
 ]
