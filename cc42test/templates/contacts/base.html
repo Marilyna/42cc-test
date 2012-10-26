@@ -9,9 +9,9 @@
         <div class="page-header">
             <h1>42 Coffee Cups Test Assignment</h1>
         </div>
-        {% block content %}{% endblock content %}
+        {% include "contacts/navbar.html" %}
         <hr>
-        <a href="{% url contacts.views.statistic %}">10 last requests</a>
+        {% block content %}{% endblock content %}
     </div>
 </body>
 </html>
