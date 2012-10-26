@@ -129,6 +129,8 @@ INSTALLED_APPS = (
     'contacts',
 )
 
+SOUTH_TESTS_MIGRATE = False
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.debug',
