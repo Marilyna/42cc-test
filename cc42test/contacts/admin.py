@@ -5,7 +5,8 @@ class ContactAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Personal info', {'fields': ['name', 'last_name', 'birth_date']}),
         ('Contacts', {'fields': ['email', 'jabber', 'skype', 'other_contacts']}),
-        ('Other', {'fields': ['bio']})
+        ('Other', {'fields': ['bio']}),
+        ('Photo', {'fields': ['photo']})
     ]
 
 class RequestAdmin(admin.ModelAdmin):
