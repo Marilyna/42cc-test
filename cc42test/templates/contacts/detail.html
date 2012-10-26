@@ -7,7 +7,14 @@
                 <dt>Name</dt><dd>{{ contact.name }}</dd>
                 <dt>Last name</dt><dd>{{ contact.last_name }}</dd>
                 <dt>Date of birth</dt><dd>{{ contact.birth_date }}</dd>
-                <dt>Photo</dt><dd><img src="{{ MEDIA_URL }}{{ contact.photo }}" class="img-polaroid"/></dd>
+                <dt>Photo</dt>
+                <dd>
+                    {% if  contact.photo %}
+                        <img src="{{ MEDIA_URL }}{{ contact.photo }}" class="img-polaroid"/>
+                    {% else %}
+                        No photo
+                    {% endif %}
+                </dd>
             </dl>
         </div>
         <div class="span4">
