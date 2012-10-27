@@ -2,6 +2,7 @@ from django.utils import unittest
 from django.test.client import Client
 
 from contacts import models, forms
+from contacts.templatetags.edit_link import edit_link
 
 
 class SimpleTest(unittest.TestCase):
@@ -81,3 +82,9 @@ class FormsTest(unittest.TestCase):
         wrong_form_data = {'login': 'wrong', 'password': 'wrong'}
         form = forms.LoginForm(wrong_form_data)
         self.assertFalse(form.is_valid())
+
+
+class TemplateTagsTest(unittest.TestCase):
+    def test_edit_link(self):
+        obj = models.Contact.objects.get(pk=1)
+        self.assertEqual(edit_link(obj), '/admin/contacts/contact/1/')
