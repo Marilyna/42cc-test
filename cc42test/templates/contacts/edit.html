@@ -8,13 +8,6 @@
                     {% include "contacts/form_field.html" with field=form.name %}
                     {% include "contacts/form_field.html" with field=form.last_name %}
                     {% include "contacts/form_field.html" with field=form.birth_date %}
-                    <!--
-                    <div class="control-group {% if field.errors %}error{% endif %}">
-                        <label class="control-label">Date</label>
-                        <div class="controls">
-                            <input type="text" class="datepicker" name="birth_date" />
-                        </div>
-                    </div>-->
                     {% include "contacts/form_field.html" with field=form.photo %}
                     {% if contact.photo %}
                         <div class="control-group">
