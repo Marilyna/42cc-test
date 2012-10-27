@@ -24,11 +24,11 @@
                 type: 'POST'
             }).done(function(data) {
                 form.html(data);
-                $('#status').text('Form is saved');
+                $('#status').text('Form is saved.');
                 $('.datepicker').datepicker();
             }).fail(function(data) {
                 $('form input, form textarea').attr('disabled', false);
-                $('#status').text('Error');
+                $('#status').text('Error.');
             });
             $('form input, form textarea').attr('disabled', true);
             return false;
