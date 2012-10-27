@@ -1,5 +1,6 @@
 from django.conf import settings
 
+
 def save_django_settings(request):
     django_settings = {}
     for k in dir(settings):

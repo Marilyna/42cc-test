@@ -3,25 +3,26 @@ from django.test.client import Client
 
 from contacts import models, forms
 
+
 class SimpleTest(unittest.TestCase):
     def setUp(self):
         self.client = Client()
-         
+
     def test_index(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        
+
     def test_detail(self):
         response = self.client.get('/1/')
         self.assertEqual(response.status_code, 200)
         response = self.client.get('/10000/')
         self.assertEqual(response.status_code, 404)
-            
+
     def test_edit_get(self):
         response = self.client.get('/1/edit/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('contacts/edit.html' in response.templates[0].name)
-        
+
     def test_edit_post(self):
         response = self.client.post('/1/edit/')
         self.assertEqual(response.status_code, 200)
@@ -34,16 +35,20 @@ class SimpleTest(unittest.TestCase):
         response = self.client.get('/sign_in/')
         self.assertEqual(response.status_code, 200)
         self.assertTrue('contacts/sign_in.html' in response.templates[0].name)
-        
+
     def test_sign_in_post(self):
-        response = self.client.post('/sign_in/', {'login': 'admin', 'password': 'admin'})
-        self.assertEqual(response.status_code, 302) #302 - redirect
-        response = self.client.post('/sign_in/', {'login': 'wrong', 'password': 'wrong'})
+        response = self.client.post('/sign_in/', {'login': 'admin',
+                                                  'password': 'admin'})
+        # 302 - redirect
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post('/sign_in/', {'login': 'wrong',
+                                                  'password': 'wrong'})
         self.assertEqual(response.status_code, 200)
-        
+
     def test_sign_out(self):
         response = self.client.get('/sign_out/')
-        self.assertEqual(response.status_code, 302) #302 - redirect
+        # 302 - redirect
+        self.assertEqual(response.status_code, 302)
 
 
 class MiddlewareTest(unittest.TestCase):
@@ -55,12 +60,12 @@ class MiddlewareTest(unittest.TestCase):
         req = models.Request.objects.latest('id')
         self.assertEqual(req.url, '/')
         self.assertEqual(req.method, 'GET')
-        
-        
+
+
 class ContextProcessorTest(unittest.TestCase):
     def setUp(self):
         self.client = Client()
-        
+
     def test_context_processor(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)

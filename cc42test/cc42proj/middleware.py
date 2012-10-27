@@ -1,6 +1,7 @@
 from contacts.models import Request
 from datetime import datetime
 
+
 class SaveRequestsMiddleware(object):
     def process_request(self, request):
         req = Request()
