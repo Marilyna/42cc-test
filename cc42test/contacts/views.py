@@ -17,7 +17,14 @@ def edit(request, contact_id):
     contact = get_object_or_404(Contact, pk=contact_id)
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES, instance=contact)
-        if form.is_valid():
+        is_valid = form.is_valid()
+        if request.is_ajax():
+            if is_valid:
+                form.save()
+                # we need new form here for ImageField to be displayed correctly
+                form = ContactForm(instance=contact)
+            return render(request, 'contacts/edit_form.html', {'form': form, 'contact': contact})
+        if is_valid:
             form.save()
             return redirect(detail, contact_id=contact_id)
     else:
