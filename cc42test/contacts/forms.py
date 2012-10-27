@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import authenticate
 
 from contacts.models import Contact
+from contacts.widgets import CalendarWidget 
 
 class LoginForm(forms.Form):
     login = forms.CharField(max_length=100)
@@ -25,4 +26,5 @@ class ContactForm(forms.ModelForm):
         widgets = {
             'other_contacts': forms.Textarea(attrs={'rows': 4}),
             'bio': forms.Textarea(attrs={'rows': 4}),
+            'birth_date': CalendarWidget(),
         }
