@@ -1,6 +1,7 @@
 cc42test/static/*
 cc42test/media/*
 cc42test/cc42test.db
+*.dat
 #############
 ## Python
 #############
