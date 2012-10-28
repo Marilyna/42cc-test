@@ -1,4 +1,9 @@
 {% extends "contacts/base.html" %}
+
+{% block extrahead %}
+{{ form.media|safe }}
+{% endblock %}
+
 {% block content %}
     {% if user.is_authenticated %}
         <form class="form-horizontal" method="POST" enctype="multipart/form-data" action=".">
@@ -10,7 +15,8 @@
         </div>
     {% endif %}
     <script type="text/javascript">
-    $(function(){
+    $(function() {
+        $('.datepicker').datepicker();
         var form = $('form')
         form.submit(function(){
             var data = form.serialize();
@@ -33,6 +39,6 @@
             $('form input, form textarea').attr('disabled', true);
             return false;
         });
-    })
+    });
     </script>
 {% endblock %}

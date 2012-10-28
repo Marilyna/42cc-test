@@ -2,6 +2,10 @@ from django.forms.widgets import DateInput
 
 
 class CalendarWidget(DateInput):
+    class Media:
+        css = {'all': ('datepicker.css',)}
+        js = ('bootstrap-datepicker.js',)
+
     def __init__(self, attrs=None, format=None):
         if attrs is None:
             attrs = {}

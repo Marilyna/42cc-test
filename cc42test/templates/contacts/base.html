@@ -2,15 +2,9 @@
 <html lang='en'>
 <head>
     <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}datepicker.css" />
     <title>{% block title %}42 Coffee Cups Test (Marilyna){% endblock %}</title>
     <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="{{ STATIC_URL }}bootstrap-datepicker.js"></script>
-    <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
-        });
-    </script>
+    {% block extrahead %}{% endblock %}
 </head>
 <body>
     <div class="container">
