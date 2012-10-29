@@ -1,5 +1,7 @@
 from django.utils import unittest
 from django.test.client import Client
+from django.contrib.contenttypes.models import ContentType
+
 
 from contacts import models, forms
 from contacts.templatetags.edit_link import edit_link
@@ -88,3 +90,24 @@ class TemplateTagsTest(unittest.TestCase):
     def test_edit_link(self):
         obj = models.Contact.objects.get(pk=1)
         self.assertEqual(edit_link(obj), '/admin/contacts/contact/1/')
+
+
+class ModelLogTest(unittest.TestCase):
+    def test_model_log(self):
+        ctype = ContentType.objects.get_for_model(models.Request)
+        req = models.Request(url='url', method='HEAD', )
+        req.save()
+        modellog = models.ModelLog.objects.latest('id')
+        self.assertEqual(modellog.content_type, ctype)
+        self.assertEqual(modellog.action, 'C')
+
+        req.url = 'another-url'
+        req.save()
+        modellog = models.ModelLog.objects.latest('id')
+        self.assertEqual(modellog.content_type, ctype)
+        self.assertEqual(modellog.action, 'U')
+
+        req.delete()
+        modellog = models.ModelLog.objects.latest('id')
+        self.assertEqual(modellog.content_type, ctype)
+        self.assertEqual(modellog.action, 'D')
