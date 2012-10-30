@@ -1,0 +1,11 @@
+th.header .icon-arrow-up, th.header .icon-arrow-down {
+    display: none;
+}
+
+th.header.headerSortUp .icon-arrow-up {
+    display: inline-block;
+}
+
+th.header.headerSortDown .icon-arrow-down {
+    display: inline-block;
+}

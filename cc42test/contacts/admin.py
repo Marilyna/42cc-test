@@ -13,7 +13,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ('url', 'method', 'timestamp')
+    list_display = ('url', 'method', 'timestamp', 'priority')
 
 
 admin.site.register(Contact, ContactAdmin)
