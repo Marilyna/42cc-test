@@ -1,6 +1,12 @@
+from traceback import format_exc
+from logging import getLogger
+
 from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.contrib.contenttypes.models import ContentType
+
+
+log = getLogger('cc42test')
 
 
 class Contact(models.Model):
@@ -43,8 +49,11 @@ class ModelLog(models.Model):
     def record(cls, sender, action):
         if sender == cls:
             return
-        ctype = ContentType.objects.get_for_model(sender)
-        cls.objects.create(content_type=ctype, action=action)
+        try:
+            ctype = ContentType.objects.get_for_model(sender)
+            cls.objects.create(content_type=ctype, action=action)
+        except Exception:
+            log.error('Error on logging model change: %s', format_exc())
 
     @classmethod
     def post_save(cls, sender, created, **kwargs):
