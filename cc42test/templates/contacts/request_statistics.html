@@ -1,19 +1,35 @@
 {% extends "contacts/base.html" %}
+{% block extrahead %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}site.css" />
+    <script src="{{ STATIC_URL }}jquery.tablesorter.js"></script>
+    <script>
+        $(function() {
+            $("#requestTable").tablesorter({widthFixed: true});
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
     {% if request_list %}
-    <table class="table table-bordered table-striped">
-        <tr>
-            <th>Request URL</th>
-            <th>Method</th>
-            <th>Timestamp</th>
-        </tr>
-        {% for req in request_list %}
+    <table class="table table-bordered table-striped" id="requestTable">
+        <thead>
             <tr>
-                <td>{{ req.url }}</td>
-                <td>{{ req.method }}</td>
-                <td>{{ req.timestamp }}</td>
+                <th class="header label label-info">Request URL <i class="pull-right icon-arrow-up icon-white"></i> <i class="pull-right icon-arrow-down icon-white"></i></th>
+                <th class="header label label-info">Method <i class="pull-right icon-arrow-up icon-white"></i> <i class="pull-right icon-arrow-down icon-white"></i></th>
+                <th class="header label label-info">Timestamp <i class="pull-right icon-arrow-up icon-white"></i> <i class="pull-right icon-arrow-down icon-white"></i></th>
+                <th class="header label label-info">Priority <i class="pull-right icon-arrow-up icon-white"></i> <i class="pull-right icon-arrow-down icon-white"></i></th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for req in request_list %}
+                <tr>
+                    <td>{{ req.url }}</td>
+                    <td>{{ req.method }}</td>
+                    <td>{{ req.date_time }}</td>
+                    <td>{% if req.priority %}<i class="icon-star" /><span class="hidden">{{ req.priority }}</span>{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
     {% else %}
         <p>No requests were made recently</p>
