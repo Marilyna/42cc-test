@@ -65,6 +65,12 @@ class MiddlewareTest(unittest.TestCase):
         req = models.Request.objects.latest('id')
         self.assertEqual(req.url, reverse('contacts.views.index'))
         self.assertEqual(req.method, 'GET')
+        self.assertFalse(req.priority)
+        response = self.client.get(reverse('contacts.views.edit', args=(1,)))
+        req = models.Request.objects.latest('id')
+        self.assertEqual(req.url, reverse('contacts.views.edit', args=(1,)))
+        self.assertEqual(req.method, 'GET')
+        self.assertTrue(req.priority)
 
 
 class ContextProcessorTest(unittest.TestCase):

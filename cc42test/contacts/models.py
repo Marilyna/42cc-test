@@ -22,6 +22,10 @@ class Request(models.Model):
     url = models.CharField(max_length=100)
     method = models.CharField(max_length=10)
     timestamp = models.DateTimeField(auto_now=True)
+    priority = models.BooleanField()
+    
+    def date_time(self):
+        return self.timestamp.strftime('%Y-%m-%d %H:%M:%S')
 
 
 class ModelLog(models.Model):
